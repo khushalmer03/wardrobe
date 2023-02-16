@@ -1,0 +1,22 @@
+version: "3"
+
+services:  
+  php:
+    build: 
+      context: .
+    ports: 
+      - "8080:80"  
+    env_file:
+      - .env
+    volumes:
+    - ./:/var/www
+
+  db:
+    image: mysql:5.7
+    environment:
+      MYSQL_DATABASE: "forge"
+      MYSQL_USER: "forge"
+      MYSQL_PASSWORD: "forge"
+      MYSQL_ROOT_PASSWORD: "root"
+    ports:
+      - '3306:3306'
